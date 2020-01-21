@@ -1,5 +1,4 @@
-# Gene Expression Dynamics Inspector (GEDI)
-## Version 2.1
+# Gene Expression Dynamics Inspector (GEDI) (v2.1)
 
 GEDI was developed by Yuchun Guo, Ying Feng, Gabriel Eichler and Sui Huang at Children’s Hospital Boston, Harvard Medical School. This software is made available for non-commercial research use only, with permission from Children's Hospital, Boston. US and foreign patents pending. 
 
