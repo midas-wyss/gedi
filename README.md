@@ -46,3 +46,24 @@ GEDI displays the analysis name and the data set name on the title bar of the pr
  - Display/Calculation: This allows user to selectively display a subset of the samples, or to calculate “Average Maps” or “Difference Maps” from selected GEDI mosaics.
   
 Above the working area are the menu items and some tool bar buttons for commonly used functions.
+
+
+### 1.6.Basic Capabilities and Feature
+ 
+ - Sample clustering: Every sample is translated into a distinct mosaic, yielding a stack of mosaics. The user can browse though the stacks and can choose to display selected samples The mosaics can be saved independently as jpeg files, and used for presentation and printing using standard graphics programs, such as PowerPoint or Corel Draw.
+ - Gene clustering: Genes that behave similarly across the set of samples are located in tiles in the same region of the grid. Tightly co-regulated genes are assigned to the same tiles. Thus, genes that behave similarly in a subset of the samples, and distinctively between samples, will spring to eye, e.g., “as a red island in a sea of blue”. Clicking on the spots will show the genes in the gene list window.
+ - Sample comparison: Static samples can be selected and used to calculate either “Average maps”, representing the “average mosaic” that displays the average value for every tile from the various samples, e.g., of a group of selected samples representing same diagnosis; or “Difference maps” by subtracting two mosaics tile-wise to facilitate sample comparison.
+ - Animation: If a stack of mosaic contains a group of sample representing time points of a time course, the stack can be animated to show the change of the transcriptomes, allowing recognition of coherent dynamic patterns across the profile.
+ - Analysis of individual genes: User can retrieve the genes associated with features in the mosaic patterns. Gene description of a gene selected based on a feature in a GEDI map for one sample and along with its behavior in other samples can be displayed by clicking on the tiles, which displays the genes contained in that respective minicluster, and by clicking on the specific gene in the list. Alternatively, a specific gene name can be search for by entering its name in the search window, which will display its location on the mosaics.
+ 
+### 1.7.The work flow and work environment of GEDI
+ 
+The GEDI environment is simple. It consists of one single user interface window containing various, fixed displays. Working with GEDI consists of the following steps:
+
+ - Loading the data as one text file. The data will need to be in a simple predefined format, see section 3.1., based on which GEDI will recognize whether the data represent static or dynamic data.
+ - Setting the parameters. This step is optional, the default settings work well. Settings pertain to both SOM parameters (mosaic resolution, learning) as well as the display (coloring, grid shape, etc)
+ - Create mosaic stacks (static analysis) or movie (dynamic analysis).
+ - Visual inspection of the results in the dynamic user interface: Watching movies of the animated mosaics, browsing through stacks of mosaics, selecting interesting samples for direct comparison, retrieving gene names based on interesting patterns or locating genes by name in the patterns
+ - Export results as Html pages, Jpeg images, or gene lists. The session with results can also be saved.
+ 
+ 
