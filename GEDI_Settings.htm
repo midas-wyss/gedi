@@ -1,0 +1,192 @@
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>New Page 1</title>
+<style>
+<!--
+p.HugeTitle
+	{margin-bottom:.0001pt;
+	text-align:center;
+	font-size:28.0pt;
+	font-family:Arial;
+	color:black;
+	font-weight:bold; margin-left:0cm; margin-right:0cm; margin-top:0cm}
+ p.MsoNormal
+	{mso-style-parent:"";
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	margin-left:0cm; margin-right:0cm; margin-top:0cm}
+ table.MsoNormalTable
+	{mso-style-parent:"";
+	font-size:10.0pt;
+	font-family:"Times New Roman"}
+p.Titlelevel3
+	{margin-bottom:.0001pt;
+	page-break-after:avoid;
+	tab-stops:-60.0pt -36.0pt 0cm 18.0pt 36.0pt 54.0pt 108.0pt 144.0pt 180.0pt 216.0pt 252.0pt 288.0pt 324.0pt 360.0pt 396.0pt 432.0pt 468.0pt 504.0pt 540.0pt 576.0pt 612.0pt 648.0pt 684.0pt 720.0pt 756.0pt 792.0pt 828.0pt 864.0pt 900.0pt 936.0pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	color:black;
+	font-weight:bold;
+	margin-left:0cm; margin-right:0cm; margin-top:0cm}
+-->
+</style>
+</head>
+
+<body>
+<div style="width: 700">
+<p class="HugeTitle" style="line-height: 20%">　</p>
+<p class="HugeTitle" style="line-height: 20%">
+<span lang="EN-US" style="font-size:10.0pt;line-height:20%;font-family:Georgia;
+color:blue">GEDI</span></p>
+<p class="HugeTitle" style="line-height: 20%">　</p>
+<div style="border:none;border-bottom:solid windowtext 1.0pt;mso-border-bottom-alt:
+solid windowtext .75pt;padding:0cm 0cm 1.0pt 0cm;margin-left:-18.0pt;
+margin-right:0cm">
+  <p class="HugeTitle" style="line-height: 20%; border: medium none; padding: 0cm">
+  <span lang="EN-US" style="font-size:10.0pt;line-height:20%;color:blue">Gene 
+  Expression Dynamics Inspector v2.1</span><p class="HugeTitle" style="line-height: 20%; border: medium none; padding: 0cm">
+  　</div>
+<p class="MsoNormal" style="margin-left:6.0pt">
+<span lang="EN-US" style="font-size:11.0pt">&nbsp;</span></p>
+<p class="MsoNormal" style="margin-left:6.0pt">
+<span lang="EN-US" style="font-size:11.0pt">Below is a detailed description of 
+each of the parameters that can be changed in the “<i>Change settings</i>” 
+dialog box in GEDI. Note that the “<i>Advanced</i>” tab settings refer to 
+technical terms related to SOM (*) and are not further explained here. </span>
+</p>
+<p></P>
+<table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0" style="border-collapse: collapse; border: medium none; margin-left: 0pt">
+  <tr style="page-break-inside: avoid">
+    <td width="108" valign="top" style="width: 81.0pt; border: 1.0pt solid black; padding-left: 5.05pt; padding-right: 5.05pt; padding-top: 0cm; padding-bottom: 0cm">
+    <p class="MsoNormal"><span lang="EN-US" style="font-size:10.0pt">Parameter&nbsp; 
+    Name</span></td>
+    <td width="504" valign="top" style="width: 378.0pt; border-left: medium none; border-right: 1.0pt solid black; border-top: 1.0pt solid black; border-bottom: 1.0pt solid black; padding-left: 5.05pt; padding-right: 5.05pt; padding-top: 0cm; padding-bottom: 0cm">
+    <p class="MsoNormal"><span lang="EN-US" style="font-size:10.0pt">Description</span></td>
+  </tr>
+  <tr style="page-break-inside: avoid">
+    <td width="108" valign="top" style="width: 81.0pt; border-left: 1.0pt solid black; border-right: 1.0pt solid black; border-top: medium none; border-bottom: 1.0pt solid black; padding-left: 5.05pt; padding-right: 5.05pt; padding-top: 0cm; padding-bottom: 0cm">
+    <p class="MsoNormal"><b><span lang="EN-US" style="font-size:10.0pt">Grid 
+    Size</span></b></td>
+    <td width="504" valign="top" style="width: 378.0pt; border-left: medium none; border-right: 1.0pt solid black; border-top: medium none; border-bottom: 1.0pt solid black; padding-left: 5.05pt; padding-right: 5.05pt; padding-top: 0cm; padding-bottom: 0cm">
+    <p class="MsoNormal"><span lang="EN-US" style="font-size:10.0pt">This is the 
+    dimension of the grid that gives rise to the mosaic, or GEDI map.</span></p>
+    <p class="MsoNormal"><span lang="EN-US" style="font-size:10.0pt">Since it is 
+    based on SOMs, it is best to avoid square grids, i.e. for (a x b), a should 
+    not be not equal to b. Typically, a is close to b, e.g. 20 x 21. There is no 
+    absolute limit to these values although computational time will increase 
+    with larger mosaic grid sizes. <i>Typically one will set the grid size so 
+    that each tile contains on average about 10 genes.</i></span></td>
+  </tr>
+  <tr style="page-break-inside: avoid">
+    <td width="108" valign="top" style="width: 81.0pt; border-left: 1.0pt solid black; border-right: 1.0pt solid black; border-top: medium none; border-bottom: 1.0pt solid black; padding-left: 5.05pt; padding-right: 5.05pt; padding-top: 0cm; padding-bottom: 0cm">
+    <p class="MsoNormal"><b><span lang="EN-US" style="font-size:10.0pt">Train 
+    iterations</span></b></td>
+    <td width="504" valign="top" style="width: 378.0pt; border-left: medium none; border-right: 1.0pt solid black; border-top: medium none; border-bottom: 1.0pt solid black; padding-left: 5.05pt; padding-right: 5.05pt; padding-top: 0cm; padding-bottom: 0cm">
+    <p class="MsoNormal"><span lang="EN-US" style="font-size:10.0pt">How many 
+    SOM iterations should you run? Typically 20 for first phase and 80 for the 
+    second phase. The more training the SOM receives, the smoother the mosaic 
+    tiles will fit each other and the tighter the mini-clusters will be. In 
+    general, the more iterations, the better the resulting graphic will be - at 
+    the cost of processing time. </span></td>
+  </tr>
+  <tr style="page-break-inside: avoid">
+    <td width="108" valign="top" style="width: 81.0pt; border-left: 1.0pt solid black; border-right: 1.0pt solid black; border-top: medium none; border-bottom: 1.0pt solid black; padding-left: 5.05pt; padding-right: 5.05pt; padding-top: 0cm; padding-bottom: 0cm">
+    <p class="MsoNormal"><b><span lang="EN-US" style="font-size:10.0pt">Color 
+    Cutoff Limit</span></b></td>
+    <td width="504" valign="top" style="width: 378.0pt; border-left: medium none; border-right: 1.0pt solid black; border-top: medium none; border-bottom: 1.0pt solid black; padding-left: 5.05pt; padding-right: 5.05pt; padding-top: 0cm; padding-bottom: 0cm">
+    <p class="MsoNormal"><span lang="EN-US" style="font-size:10.0pt">GEDI uses a 
+    universal color scheme to color all mosaics.&nbsp; The Color Cutoff Limit 
+    determines the extreme value at which the coloring scheme becomes 
+    saturated.&nbsp; Specifically, the Color Cutoff Limit is <i>the number of 
+    standard deviations away from the mean value of all of the tiles (in all 
+    mosaics) at which the colors become saturated</i>. For example, if the Color 
+    Cutoff Limit was set to 2 and a particular mosaic tile has a centroid value 
+    2.4 which is 3 standard deviations from the mean of the data, it would be 
+    the same color as all of the other elements 2 or more standard deviations 
+    away from the mean.&nbsp; </span></td>
+  </tr>
+  <tr style="page-break-inside: avoid">
+    <td width="108" valign="top" style="width: 81.0pt; border-left: 1.0pt solid black; border-right: 1.0pt solid black; border-top: medium none; border-bottom: 1.0pt solid black; padding-left: 5.05pt; padding-right: 5.05pt; padding-top: 0cm; padding-bottom: 0cm">
+    <p class="MsoNormal"><b><span lang="EN-US" style="font-size:10.0pt">
+    Input/output directory</span></b></td>
+    <td width="504" valign="top" style="width: 378.0pt; border-left: medium none; border-right: 1.0pt solid black; border-top: medium none; border-bottom: 1.0pt solid black; padding-left: 5.05pt; padding-right: 5.05pt; padding-top: 0cm; padding-bottom: 0cm">
+    <p class="MsoNormal"><span lang="EN-US" style="font-size:10.0pt">The default 
+    directory that GEDI will use to open or save files.</span></td>
+  </tr>
+  <tr style="page-break-inside: avoid">
+    <td width="108" valign="top" style="width: 81.0pt; border-left: 1.0pt solid black; border-right: 1.0pt solid black; border-top: medium none; border-bottom: 1.0pt solid black; padding-left: 5.05pt; padding-right: 5.05pt; padding-top: 0cm; padding-bottom: 0cm">
+    <p class="MsoNormal"><b><span lang="EN-US" style="font-size:10.0pt">
+    Neighborhood Radius</span></b></td>
+    <td width="504" valign="top" style="width: 378.0pt; border-left: medium none; border-right: 1.0pt solid black; border-top: medium none; border-bottom: 1.0pt solid black; padding-left: 5.05pt; padding-right: 5.05pt; padding-top: 0cm; padding-bottom: 0cm">
+    <p class="MsoNormal"><span lang="EN-US" style="font-size:10.0pt">The 
+    Neighborhood parameter may be used to control how neighbors of the “winning 
+    node” in the SOM training process are trained (adjusted). The neighborhood 
+    function used is a &quot;sombrero&quot; or &quot;Mexican-hat&quot; version of that described by 
+    Kohonen (*).</span></td>
+  </tr>
+  <tr style="page-break-inside: avoid">
+    <td width="108" valign="top" style="width: 81.0pt; border-left: 1.0pt solid black; border-right: 1.0pt solid black; border-top: medium none; border-bottom: 1.0pt solid black; padding-left: 5.05pt; padding-right: 5.05pt; padding-top: 0cm; padding-bottom: 0cm">
+    <p class="MsoNormal"><b><span lang="EN-US" style="font-size:10.0pt">Learning 
+    factor</span></b></td>
+    <td width="504" valign="top" style="width: 378.0pt; border-left: medium none; border-right: 1.0pt solid black; border-top: medium none; border-bottom: 1.0pt solid black; padding-left: 5.05pt; padding-right: 5.05pt; padding-top: 0cm; padding-bottom: 0cm">
+    <p class="MsoNormal"><span lang="EN-US" style="font-size:10.0pt">Learning 
+    factor controls how much of a calculated weight adjustment is actually 
+    applied.</span></p>
+    <p class="MsoNormal"><span lang="EN-US" style="font-size:10.0pt">&nbsp;</span></td>
+  </tr>
+  <tr style="page-break-inside: avoid">
+    <td width="108" valign="top" style="width: 81.0pt; border-left: 1.0pt solid black; border-right: 1.0pt solid black; border-top: medium none; border-bottom: 1.0pt solid black; padding-left: 5.05pt; padding-right: 5.05pt; padding-top: 0cm; padding-bottom: 0cm">
+    <p class="MsoNormal" style="margin-left: -.1pt"><b>
+    <span lang="EN-US" style="font-size:10.0pt">Neighborhood Block</span></b></td>
+    <td width="504" valign="top" style="width: 378.0pt; border-left: medium none; border-right: 1.0pt solid black; border-top: medium none; border-bottom: 1.0pt solid black; padding-left: 5.05pt; padding-right: 5.05pt; padding-top: 0cm; padding-bottom: 0cm">
+    <p class="MsoNormal"><span lang="EN-US" style="font-size:10.0pt">The 
+    Neighborhood Block parameter defines the size of a hypercube about the 
+    winning node. Nodes which fall outside of this hypercube will not be 
+    trained, regardless of the neighborhood coefficient that might be calculated 
+    for them. <i>The value of Neighborhood Block should be an even integer.</i></span></td>
+  </tr>
+  <tr style="page-break-inside: avoid">
+    <td width="108" valign="top" style="width: 81.0pt; border-left: 1.0pt solid black; border-right: 1.0pt solid black; border-top: medium none; border-bottom: 1.0pt solid black; padding-left: 5.05pt; padding-right: 5.05pt; padding-top: 0cm; padding-bottom: 0cm">
+    <p class="MsoNormal"><b><span lang="EN-US" style="font-size:10.0pt">
+    Conscience</span></b></td>
+    <td width="504" valign="top" style="width: 378.0pt; border-left: medium none; border-right: 1.0pt solid black; border-top: medium none; border-bottom: 1.0pt solid black; padding-left: 5.05pt; padding-right: 5.05pt; padding-top: 0cm; padding-bottom: 0cm">
+    <p class="MsoNormal"><span lang="EN-US" style="font-size:10.0pt">The 
+    Conscience parameter is used to reduce the possibility of the same node 
+    winning too often. It acts to increase or decrease the likelihood that a 
+    particular node will emerge as the winner for the current input pattern.</span></td>
+  </tr>
+  <tr style="page-break-inside: avoid">
+    <td width="108" valign="top" style="width: 81.0pt; border-left: 1.0pt solid black; border-right: 1.0pt solid black; border-top: medium none; border-bottom: 1.0pt solid black; padding-left: 5.05pt; padding-right: 5.05pt; padding-top: 0cm; padding-bottom: 0cm">
+    <p class="MsoNormal" style="margin-left: -.1pt"><b>
+    <span lang="EN-US" style="font-size:10.0pt">Neighborhood Clip</span></b></td>
+    <td width="504" valign="top" style="width: 378.0pt; border-left: medium none; border-right: 1.0pt solid black; border-top: medium none; border-bottom: 1.0pt solid black; padding-left: 5.05pt; padding-right: 5.05pt; padding-top: 0cm; padding-bottom: 0cm">
+    <p class="MsoNormal"><span lang="EN-US" style="font-size:10.0pt">
+    Coefficients with a value less than the Neighborhood Clip parameter are not 
+    applied, so, the input weights for that node are not modified.</span></td>
+  </tr>
+  <tr style="page-break-inside: avoid">
+    <td width="108" valign="top" style="width: 81.0pt; border-left: 1.0pt solid black; border-right: 1.0pt solid black; border-top: medium none; border-bottom: 1.0pt solid black; padding-left: 5.05pt; padding-right: 5.05pt; padding-top: 0cm; padding-bottom: 0cm">
+    <p class="MsoNormal"><b><span lang="EN-US" style="font-size:10.0pt">Random 
+    seed</span></b></td>
+    <td width="504" valign="top" style="width: 378.0pt; border-left: medium none; border-right: 1.0pt solid black; border-top: medium none; border-bottom: 1.0pt solid black; padding-left: 5.05pt; padding-right: 5.05pt; padding-top: 0cm; padding-bottom: 0cm">
+    <p class="MsoNormal"><span lang="EN-US" style="font-size:10.0pt">Random seed 
+    is used to generate a new set of random number in the initialization of the 
+    SOM training, which affects, for example, the sequence of genes being picked 
+    for the SOM training.</span></td>
+  </tr>
+</table>
+<p class="Titlelevel3"><span lang="EN-US" style="font-size:11.0pt">&nbsp;</span></p>
+<p class="MsoNormal" style="text-autospace: none">
+<span lang="EN-US" style="font-size:10.0pt">*Kohonen T. (1997). Self&#8209;organizing 
+maps, </span><span lang="DA" style="font-size: 10.0pt">Springer Verlag, Berlin 
+Germany</span><span lang="DA" style="font-size: 10.0pt; font-family: Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></p>
+
+</body>
+</div>
+</html>

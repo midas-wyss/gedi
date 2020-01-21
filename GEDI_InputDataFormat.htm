@@ -1,0 +1,1205 @@
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>GEDI Input Data Format</title>
+<style>
+<!--
+div.Section1
+	{page:Section1;
+	}
+p.HugeTitle
+	{margin-bottom:.0001pt;
+	text-align:center;
+	font-size:28.0pt;
+	font-family:Arial;
+	color:black;
+	font-weight:bold; margin-left:0cm; margin-right:0cm; margin-top:0cm}
+p.BigTitle
+	{margin-bottom:.0001pt;
+	text-align:center;
+	font-size:17.0pt;
+	font-family:Arial;
+	color:black;
+	font-weight:bold; margin-left:0cm; margin-right:0cm; margin-top:0cm}
+table.MsoTableGrid
+	{border:1.0pt solid windowtext;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	font-size:10.0pt;
+	font-family:"Times New Roman"}
+ p.MsoNormal
+	{mso-style-parent:"";
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	margin-left:0cm; margin-right:0cm; margin-top:0cm}
+span.Boldheading
+	{color:black;
+	font-weight:bold}
+p.MainText
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:21.3pt;
+	margin-bottom:.0001pt;
+	tab-stops:-60.0pt -36.0pt 0cm 18.0pt 21.3pt 54.0pt 108.0pt 144.0pt 180.0pt 216.0pt 252.0pt 288.0pt 324.0pt 360.0pt 396.0pt 432.0pt 468.0pt 504.0pt 540.0pt 576.0pt 612.0pt 648.0pt 684.0pt 720.0pt 756.0pt 792.0pt 828.0pt 864.0pt 900.0pt 936.0pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	color:black}
+p.Mainbullet
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:35.45pt;
+	margin-bottom:.0001pt;
+	text-indent:-14.15pt;
+	tab-stops:-60.0pt -36.0pt 0cm 18.0pt list 35.45pt left 108.0pt 144.0pt 180.0pt 216.0pt 252.0pt 288.0pt 324.0pt 360.0pt 396.0pt 432.0pt 468.0pt 504.0pt 540.0pt 576.0pt 612.0pt 648.0pt 684.0pt 720.0pt 756.0pt 792.0pt 828.0pt 864.0pt 900.0pt 936.0pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	color:black}
+ table.MsoNormalTable
+	{mso-style-parent:"";
+	font-size:10.0pt;
+	font-family:"Times New Roman"}
+-->
+</style>
+</head>
+
+<body>
+<div width="750">
+<div class="Section1" style="width: 634; height: 386">
+  <p class="HugeTitle"><!--[if supportFields]>
+  <span  style="font-size: 18.0pt; font-family: Georgia; color: blue">
+  &nbsp;</span><![endif]--><span  style="font-size: 18.0pt; font-family: Georgia; color: blue">GEDI
+  </span></p>
+  <div style="mso-border-bottom-alt: solid windowtext .75pt; border-left: medium none; border-right: medium none; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 0cm; padding-right: 0cm; padding-top: 0cm; padding-bottom: 1.0pt">
+    <p class="BigTitle" style="border: medium none; padding: 0cm">
+    <span  style="font-size: 14.0pt; color: blue">Gene Expression 
+    Dynamics Inspector v2.1</span></div>
+  <p class="BigTitle"><span  style="font-size: 18.0pt">Input Data 
+  Format</span></p>
+  <p class="BigTitle"><span  style="font-size: 12.0pt">(refers to 
+  3.1. in <a href="GEDI_Help.htm">User Manual – Overview</a>)</span></p>
+  <p class="BigTitle"><span  style="font-size: 12.0pt">&nbsp;</span></p>
+  <table class="MsoTableGrid" border="1" cellspacing="0" cellpadding="0" style="border-collapse: collapse; border: medium none">
+    <tr>
+      <td width="638" valign="top" style="width: 478.8pt; border: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 5.65pt; padding-bottom: 4.25pt">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph; page-break-after: avoid">
+      <span  style="font-size: 11.0pt">GEDI</span><span  style="font-size: 11.0pt; font-family: WP TypographicSymbols">=</span><span  style="font-size: 11.0pt">s 
+      input file is one <i>large tab-delimited ASCII file</i> that contains all 
+      the samples (gene expression experiments) and is only slightly different 
+      to most standard microarray output spreadsheets. The preparation analysis 
+      in GEDI, all you have to do is some modifications of the header rows, 
+      which will be discussed here.</span></td>
+    </tr>
+  </table>
+  <p class="MsoNormal" style="page-break-after: avoid">
+  <span class="Boldheading"><span lang="EN-US">&nbsp;</span></span></p>
+  <p class="MainText" style="text-align: justify; text-justify: inter-ideograph; margin-left: 0cm">
+  <span  style="font-size: 11.0pt">As is conventionally used, the 
+  bulk of the file is a matrix of <i>N<sub>G</sub></i> rows (genes) by <i>N<sub>S</sub>
+  </i>columns (samples).&nbsp; Each <b><i>column</i></b> represents one gene 
+  microarray measurement of a profile (sample) across the set <i>G</i>, of genes
+  <i>g<sub>i </sub></i>( <i>i </i>= 1,.., <i>N</i><sub>G</sub>); each gene is 
+  represented by <b><i>row</i></b>, giving rise to the <i>N<sub>G</sub></i> 
+  rows.&nbsp; This corresponds to current convention. But since GEDI can analyze 
+  multiple parallel time courses, for dynamic analysis, the set <i>S</i>, 
+  containing the samples can be partitioned into any number of <i>J</i> distinct 
+  classes <i>S<sub>J</sub></i> representing the <i>J </i>time courses: <i>S</i> 
+  = </span>
+  <st2:citation><span  style="font-size: 11.0pt">{ <i>S<sub>1</sub>, 
+  S<sub>2</sub> .. S<sub>J</sub></i><sub> </sub>}</span></st2:citation><span  style="font-size: 11.0pt">. 
+  Each set <i>S<sub>j</sub></i> can contain any <i>T<sub>j</sub></i> number of 
+  time point samples: <i>S<sub>j</sub></i> = </span>
+  <st2:citation><span  style="font-size: 11.0pt">{ <i>s<sub>1j</sub></i><sub>,
+  </sub><i>s<sub>2,j</sub></i><sub>,.., </sub><i>s<sub>Tj,j </sub></i>}</span></st2:citation><span  style="font-size: 11.0pt"> 
+  and is represented by a column, giving rise to the total <i>N<sub>S</sub></i> 
+  columns. Note: There is not limit on how many classes <i>J</i>, or how many 
+  time points in the class. </span></p>
+  <p class="MainText" style="text-align: justify; text-justify: inter-ideograph; margin-left: 0cm">
+  <span  style="font-size: 11.0pt">&nbsp;</span></p>
+  <p class="MainText" style="text-align: justify; text-justify: inter-ideograph; margin-left: 0cm">
+  <span  style="font-size: 11.0pt">GEDI can be used to analyze two 
+  different types of gene expression profile data. </span></p>
+  <p class="Mainbullet" style="text-align: justify; text-justify: inter-ideograph; text-indent: -18.0pt; margin-left: 36.0pt">
+  <span  style="font-size: 11.0pt; font-family: Wingdings">§<span style="font-style: normal; font-variant: normal; font-weight: normal; font-size: 7.0pt; font-family: Times New Roman">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </span></span><i><span  style="font-size: 11.0pt">Dynamic analysis</span></i><span  style="font-size: 11.0pt">: 
+  Each class has more than one time-series data</span></p>
+  <p class="Mainbullet" style="text-align: justify; text-justify: inter-ideograph; text-indent: -18.0pt; margin-left: 36.0pt">
+  <span  style="font-size: 11.0pt; font-family: Wingdings">§<span style="font-style: normal; font-variant: normal; font-weight: normal; font-size: 7.0pt; font-family: Times New Roman">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </span></span><i><span  style="font-size: 11.0pt">Static analysis</span></i><span  style="font-size: 11.0pt">: 
+  Each class has only one data point. It is essentially a special case of 
+  dynamic analysis with only 1 time point.</span></p>
+  <p class="MainText" style="text-align: justify; text-justify: inter-ideograph; margin-left: 0cm">
+  <span  style="font-size: 11.0pt">The entry in the first column, 
+  first row indicates whether the data are to be analyses as <i>dynamic</i> or
+  <i>static</i> data set.</span></p>
+  <p class="MainText" style="text-align: justify; text-justify: inter-ideograph; margin-left: 0cm">
+  <span  style="font-size: 11.0pt">&nbsp;&nbsp;</span></p>
+  <p class="MainText" style="text-align: justify; text-justify: inter-ideograph; margin-left: 0cm">
+  <b><span  style="font-size: 14.0pt; font-family: Arial">1. General 
+  format</span></b></p>
+  <p class="MainText" style="text-align: justify; text-justify: inter-ideograph; margin-left: 0cm">
+  <b><span  style="font-size: 11.0pt; font-family: Arial">&nbsp;</span></b></p>
+  <p class="MainText" style="text-align: justify; text-justify: inter-ideograph; margin-left: 0cm">
+  <b><span  style="font-size: 11.0pt; font-family: Arial">1.1. 
+  Dynamic analysis</span></b></p>
+  <p class="MainText" style="text-align: justify; text-justify: inter-ideograph; margin-left: 0cm">
+  <span  style="font-size: 11.0pt">In essence, the manual formatting 
+  of the header rows is required to tell GEDI which samples belong to the same 
+  time course. In <i>Dynamic</i> analysis, each sample will have a numeric
+  </span>
+  <span  style="font-size: 11.0pt; font-family: WP TypographicSymbols">
+  &gt;</span><span  style="font-size: 11.0pt">sample ID</span><span  style="font-size: 11.0pt; font-family: WP TypographicSymbols">=</span><span  style="font-size: 11.0pt">&nbsp; 
+  that represent the time at which the sample was measured (for example, 0, 0.5, 
+  1.2, 3, etc). Sample ID is unique in the same sample class. But of course, two 
+  time courses will have samples with the same ID ‘1h’. Hence, an additional row 
+  will contain the label indicating the time course (sample class <i>J</i>) a 
+  sample belongs to.</span></p>
+  <p class="MainText" style="text-align: justify; text-justify: inter-ideograph; margin-left: 0cm">
+  <span  style="font-size: 11.0pt">&nbsp;</span></p>
+  <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+  <span class="Boldheading"><i><span  style="font-size: 11.0pt">The 
+  file format </span></i></span></p>
+  <p class="MainText" style="text-align: justify; text-justify: inter-ideograph; margin-left: 0cm">
+  <span  style="font-size: 11.0pt">The input file that contains the 
+  data matrix must be annotated to indicate which of the samples belong to which 
+  sample class <i>Sj</i>, (i.e., time course). This is achieved by the 
+  additional header rows “Sample Header Rows”. Thus, the rows in the data files 
+  are broken up into 3 sections:</span></p>
+  <p class="MainText" style="margin-left: 0cm">
+  <span  style="font-size: 11.0pt">&nbsp;</span></p>
+  <p class="MainText" style="text-indent: -18.0pt; margin-left: 36.0pt">
+  <span  style="font-size: 11.0pt; font-family: Wingdings">§<span style="font-style: normal; font-variant: normal; font-weight: normal; font-size: 7.0pt; font-family: Times New Roman">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </span></span><b><i><span  style="font-size: 11.0pt">Dataset 
+  Header Row:</span></i></b><i><span  style="font-size: 11.0pt">
+  </span></i><span  style="font-size: 11.0pt">defines the dataset as 
+  “Dynamic”, additional information on the data set. </span></p>
+  <p class="MainText" style="text-indent: -18.0pt; margin-left: 36.0pt">
+  <span  style="font-size: 11.0pt; font-family: Wingdings">§<span style="font-style: normal; font-variant: normal; font-weight: normal; font-size: 7.0pt; font-family: Times New Roman">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </span></span><b><i><span  style="font-size: 11.0pt">Sample Header 
+  Rows</span></i><span  style="font-size: 11.0pt">:</span></b><span  style="font-size: 11.0pt"> 
+  There are <i>J</i> such header rows, one for each sample class (time course). 
+  The content of the cells indicate for each column whether the respective 
+  sample belongs to the sample class indicated in the first column or not:</span></p>
+  <p class="MainText" style="text-indent: -18.0pt; margin-left: 36.0pt">
+  <span  style="font-size: 11.0pt; font-family: Wingdings">§<span style="font-style: normal; font-variant: normal; font-weight: normal; font-size: 7.0pt; font-family: Times New Roman">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </span></span><b><i><span  style="font-size: 11.0pt">Gene 
+  Expression Rows</span></i></b><span  style="font-size: 11.0pt">: 
+  contains the gene ID, gene description and the expression values. &nbsp;</span></p>
+  <p class="MainText" style="margin-left: 0cm">
+  <span  style="font-size: 11.0pt">&nbsp;</span></p>
+  <table class="MsoTableGrid" border="1" cellspacing="0" cellpadding="0" style="border-collapse: collapse; border: medium none; margin-left: 28.85pt">
+    <tr style="height: 33.0pt">
+      <td width="558" valign="top" style="width: 418.65pt; height: 33.0pt; border: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 5.65pt; padding-bottom: 4.25pt">
+      <p class="MainText" style="text-align: justify; text-justify: inter-ideograph; margin-left: 0cm">
+      <span lang="EN-US">For columns with data belonging to the sample class 
+      indicated in the first column, enter the <i>time point label</i>, 
+      otherwise enter <i>-1</i> </span></td>
+    </tr>
+  </table>
+  <p class="MainText" style="margin-left: 0cm">
+  <span  style="font-size: 11.0pt">&nbsp;&nbsp;</span><b><i><span  style="font-size: 11.0pt">&nbsp;</span></i></b></p>
+  <p class="MainText" style="margin-left: 0cm"><b><i>
+  <span  style="font-size: 11.0pt">General format for GEDI dynamic 
+  analysis</span></i></b></p>
+  <p class="MainText" style="text-align: justify; text-justify: inter-ideograph; margin-left: 0cm">
+  <span  style="font-size: 11.0pt">The general format of the 
+  spreadsheet with the expression data, illustrated for a two-time course 
+  experiment is as follows:</span></p>
+  <p class="MainText" style="text-align: justify; text-justify: inter-ideograph; margin-left: 1cm">
+  <span  style="font-size: 11.0pt">&nbsp;</span></p>
+  <table class="MsoTableGrid" border="1" cellspacing="0" cellpadding="0" style="border-collapse: collapse; border: medium none" width="594">
+    <tr>
+      <td valign="top" style="width: 98; border: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #FF9900">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <b><span  style="font-size: 10.0pt">}Dynamic</span></b></td>
+      <td valign="top" style="width: 50; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: 1.0pt solid windowtext; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #E6E6E6">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <b><span  style="font-size: 10.0pt">DESC</span></b></td>
+      <td valign="top" style="width: 46; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: 1.0pt solid windowtext; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CCFFCC">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">(Time </span></p>
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">Unit)</span></td>
+      <td valign="top" style="width: 68; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: 1.0pt solid windowtext; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CCFFCC">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">(Total Gene Number)</span></td>
+      <td valign="top" style="width: 56; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: 1.0pt solid windowtext; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CCFFCC">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">(Data set name)</span></td>
+      <td valign="top" style="width: 25; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: 1.0pt solid windowtext; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">&nbsp;</span></td>
+      <td valign="top" style="width: 22; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: 1.0pt solid windowtext; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph; margin-right: -5.9pt">
+      <span  style="font-size: 10.0pt">&nbsp;</span></td>
+      <td valign="top" style="width: 23; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: 1.0pt solid windowtext; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph; margin-right: -5.9pt">
+      <span  style="font-size: 10.0pt">&nbsp;</span></td>
+      <td valign="top" style="width: 29; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: 1.0pt solid windowtext; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph; margin-right: -5.9pt">
+      <span  style="font-size: 10.0pt">&nbsp;</span></td>
+      <td valign="top" style="width: 26; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: 1.0pt solid windowtext; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph; margin-right: -5.9pt">
+      <span  style="font-size: 10.0pt">&nbsp;</span></td>
+    </tr>
+    <tr>
+      <td valign="top" style="width: 98; border-left: 1.0pt solid windowtext; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #FFFF99">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <b><span  style="font-size: 10.0pt">} </span></b>
+      <span  style="font-size: 10.0pt">(time course1)</span></td>
+      <td valign="top" style="width: 50; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #E6E6E6">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <b><span  style="font-size: 10.0pt">DESC</span></b></td>
+      <td valign="top" style="width: 46; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #FFFF99">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">T1</span></td>
+      <td valign="top" style="width: 68; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #FFFF99">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">T2</span></td>
+      <td valign="top" style="width: 56; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #FFFF99">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">T3</span></td>
+      <td valign="top" style="width: 25; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #FFFF99">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">T4</span></td>
+      <td valign="top" style="width: 22; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CCFFCC">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph; margin-right: -5.9pt">
+      <span  style="font-size: 10.0pt">-1</span></td>
+      <td valign="top" style="width: 23; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CCFFCC">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph; margin-right: -5.9pt">
+      <span  style="font-size: 10.0pt">-1</span></td>
+      <td valign="top" style="width: 29; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CCFFCC">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph; margin-right: -5.9pt">
+      <span  style="font-size: 10.0pt">-1</span></td>
+      <td valign="top" style="width: 26; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CCFFCC">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph; margin-right: -5.9pt">
+      <span  style="font-size: 10.0pt">-1</span></td>
+    </tr>
+    <tr>
+      <td valign="top" style="width: 98; border-left: 1.0pt solid windowtext; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CCFFFF">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <b><span  style="font-size: 10.0pt">}</span></b><span  style="font-size: 10.0pt"> 
+      (time course2)</span></td>
+      <td valign="top" style="width: 50; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #E6E6E6">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <b><span  style="font-size: 10.0pt">DESC</span></b></td>
+      <td valign="top" style="width: 46; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CCFFCC">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">-1</span></td>
+      <td valign="top" style="width: 68; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CCFFCC">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">-1</span></td>
+      <td valign="top" style="width: 56; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CCFFCC">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">-1</span></td>
+      <td valign="top" style="width: 25; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CCFFCC">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">-1</span></td>
+      <td valign="top" style="width: 22; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CCFFFF">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph; margin-right: -5.9pt">
+      <span  style="font-size: 10.0pt">T1</span></td>
+      <td valign="top" style="width: 23; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CCFFFF">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph; margin-right: -5.9pt">
+      <span  style="font-size: 10.0pt">T2</span></td>
+      <td valign="top" style="width: 29; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CCFFFF">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph; margin-right: -5.9pt">
+      <span  style="font-size: 10.0pt">T3</span></td>
+      <td valign="top" style="width: 26; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CCFFFF">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph; margin-right: -5.9pt">
+      <span  style="font-size: 10.0pt">T4</span></td>
+    </tr>
+    <tr>
+      <td valign="top" style="width: 98; border-left: 1.0pt solid windowtext; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">(Gene ID)</span></td>
+      <td valign="top" style="width: 50; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #E0E0E0">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">(Gene Descr)</span></td>
+      <td valign="top" style="width: 46; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #FFFF99">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">D</span></td>
+      <td valign="top" style="width: 68; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #FFFF99">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">D</span></td>
+      <td valign="top" style="width: 56; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #FFFF99">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">D</span></td>
+      <td valign="top" style="width: 25; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #FFFF99">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">D</span></td>
+      <td valign="top" style="width: 22; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CCFFFF">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph; margin-right: -5.9pt">
+      <span  style="font-size: 10.0pt">D</span></td>
+      <td valign="top" style="width: 23; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CCFFFF">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph; margin-right: -5.9pt">
+      <span  style="font-size: 10.0pt">D</span></td>
+      <td valign="top" style="width: 29; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CCFFFF">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph; margin-right: -5.9pt">
+      <span  style="font-size: 10.0pt">D</span></td>
+      <td valign="top" style="width: 26; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CCFFFF">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph; margin-right: -5.9pt">
+      <span  style="font-size: 10.0pt">D</span></td>
+    </tr>
+    <tr>
+      <td valign="top" style="width: 98; border-left: 1.0pt solid windowtext; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">(Gene ID)</span></td>
+      <td valign="top" style="width: 50; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #E0E0E0">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">(Gene Descr)</span></td>
+      <td valign="top" style="width: 46; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #FFFF99">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">D</span></td>
+      <td valign="top" style="width: 68; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #FFFF99">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">D</span></td>
+      <td valign="top" style="width: 56; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #FFFF99">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">D</span></td>
+      <td valign="top" style="width: 25; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #FFFF99">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">D</span></td>
+      <td valign="top" style="width: 22; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CCFFFF">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph; margin-right: -5.9pt">
+      <span  style="font-size: 10.0pt">D</span></td>
+      <td valign="top" style="width: 23; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CCFFFF">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph; margin-right: -5.9pt">
+      <span  style="font-size: 10.0pt">D</span></td>
+      <td valign="top" style="width: 29; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CCFFFF">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph; margin-right: -5.9pt">
+      <span  style="font-size: 10.0pt">D</span></td>
+      <td valign="top" style="width: 26; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CCFFFF">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph; margin-right: -5.9pt">
+      <span  style="font-size: 10.0pt">D</span></td>
+    </tr>
+  </table>
+  <p class="MainText" style="text-align: justify; text-justify: inter-ideograph; margin-left: 0cm">
+  <span lang="EN-US">&nbsp;</span></p>
+  <p class="MainText" style="text-align: justify; text-justify: inter-ideograph; margin-left: 0cm">
+  <span  style="font-size: 11.0pt">Entries in <b>bold</b> must be 
+  entered as such. The terms in parenthesis (…) are data-specific labels.</span></p>
+  <p class="MainText" style="text-align: justify; text-justify: inter-ideograph; margin-left: 0cm">
+  <i><span  style="font-size: 11.0pt">TX</span></i><span  style="font-size: 11.0pt"> 
+  stands for time point values, or the sample ID of the sample&nbsp;&nbsp;&nbsp; </span></p>
+  <p class="MainText" style="text-align: justify; text-justify: inter-ideograph; margin-left: 0cm">
+  <i><span  style="font-size: 11.0pt">D</span></i><span  style="font-size: 11.0pt"> 
+  stands for the numeric data for gene expression level</span></p>
+  <p class="MainText" style="text-align: justify; text-justify: inter-ideograph; margin-left: 0cm">
+  <i><span  style="font-size: 11.0pt">DESC</span></i><span  style="font-size: 11.0pt"> 
+  heads the column with the gene description. </span></p>
+  <p class="MainText" style="text-align: justify; text-justify: inter-ideograph; margin-left: 9.25pt">
+  <span  style="font-size: 11.0pt">&nbsp;</span></p>
+  <p class="MainText" style="text-align: justify; text-justify: inter-ideograph; margin-left: 0cm">
+  <b><span  style="font-size: 11.0pt; font-family: Arial">1.2. 
+  Static analysis</span></b></p>
+  <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+  <span class="Boldheading">
+  <span  style="font-size: 11.0pt; font-weight: normal">Static 
+  analysis is straightforward, since samples are not grouped into classes, 
+  hence, there is only one sample header row. The sample labels are directly 
+  above the respective columns.</span></span></p>
+  <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+  <span class="Boldheading">
+  <span  style="font-size: 11.0pt; font-weight: normal">&nbsp;</span></span></p>
+  <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+  <span class="Boldheading"><i><span  style="font-size: 11.0pt">The 
+  file format </span></i></span></p>
+  <p class="MainText" style="text-align: justify; text-justify: inter-ideograph; text-indent: -18.0pt; margin-left: 36.0pt">
+  <span  style="font-size: 11.0pt; font-family: Wingdings">§<span style="font-style: normal; font-variant: normal; font-weight: normal; font-size: 7.0pt; font-family: Times New Roman">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </span></span><i><span  style="font-size: 11.0pt">Dataset Header 
+  Row</span></i><span  style="font-size: 11.0pt">: Defines the 
+  dataset as “Static”.<i> &nbsp;</i></span></p>
+  <p class="MainText" style="text-align: justify; text-justify: inter-ideograph; text-indent: -18.0pt; margin-left: 36.0pt">
+  <span  style="font-size: 11.0pt; font-family: Wingdings">§<span style="font-style: normal; font-variant: normal; font-weight: normal; font-size: 7.0pt; font-family: Times New Roman">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </span></span><i><span  style="font-size: 11.0pt">Sample Header 
+  Row</span></i><span  style="font-size: 11.0pt">: Contains label of 
+  each sample – for each column </span></p>
+  <p class="MainText" style="text-align: justify; text-justify: inter-ideograph; text-indent: -18.0pt; margin-left: 36.0pt">
+  <span  style="font-size: 11.0pt; font-family: Wingdings">§<span style="font-style: normal; font-variant: normal; font-weight: normal; font-size: 7.0pt; font-family: Times New Roman">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </span></span><i><span  style="font-size: 11.0pt">Gene Expression 
+  Rows</span></i><span  style="font-size: 11.0pt">. </span></p>
+  <p class="MainText" style="text-align: justify; text-justify: inter-ideograph; margin-left: 0cm">
+  <i><span  style="font-size: 11.0pt">&nbsp;</span></i></p>
+  <p class="MainText" style="text-align: justify; text-justify: inter-ideograph; margin-left: 0cm">
+  <b><i><span  style="font-size: 11.0pt">General format for GEDI 
+  static analysis</span></i></b></p>
+  <p class="MainText" style="margin-left: 9.25pt"><b><span lang="EN-US">&nbsp;</span></b></p>
+  <table class="MsoTableGrid" border="1" cellspacing="0" cellpadding="0" style="border-collapse: collapse; border: medium none; margin-left: 5.4pt" width="552">
+    <tr>
+      <td valign="top" style="width: 82; border: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #FF9900">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <b><span  style="font-size: 10.0pt">}Static</span></b></td>
+      <td valign="top" style="width: 57; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: 1.0pt solid windowtext; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #E6E6E6">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <b><span  style="font-size: 10.0pt">DESC</span></b></td>
+      <td valign="top" style="width: 44; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: 1.0pt solid windowtext; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #FF9900">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <b><span  style="font-size: 10.0pt">N/A</span></b></td>
+      <td valign="top" style="width: 67; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: 1.0pt solid windowtext; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CCFFCC">
+      <p class="MsoNormal" align="center" style="text-align: center">
+      <span  style="font-size: 10.0pt">(Total Gene Number)</span></td>
+      <td valign="top" style="width: 60; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: 1.0pt solid windowtext; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CCFFCC">
+      <p class="MsoNormal" align="center" style="text-align: center">
+      <span  style="font-size: 10.0pt">(Data set name)</span></td>
+      <td valign="top" style="width: 26; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: 1.0pt solid windowtext; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">&nbsp;</span></td>
+      <td valign="top" style="width: 27; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: 1.0pt solid windowtext; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">&nbsp;</span></td>
+      <td valign="top" style="width: 29; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: 1.0pt solid windowtext; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">&nbsp;</span></td>
+      <td valign="top" style="width: 24; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: 1.0pt solid windowtext; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">&nbsp;</span></td>
+    </tr>
+    <tr>
+      <td valign="top" style="width: 82; border-left: 1.0pt solid windowtext; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #FF9900">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <b><span  style="font-size: 10.0pt">}$</span></b></td>
+      <td valign="top" style="width: 57; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #E6E6E6">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <b><span  style="font-size: 10.0pt">DESC</span></b></td>
+      <td valign="top" style="width: 44; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CCFFCC">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">S1</span></td>
+      <td valign="top" style="width: 67; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CCFFCC">
+      <p class="MsoNormal" align="center" style="text-align: center">
+      <span  style="font-size: 10.0pt">S2</span></td>
+      <td valign="top" style="width: 60; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CCFFCC">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">S3</span></td>
+      <td valign="top" style="width: 26; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CCFFCC">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">S4</span></td>
+      <td valign="top" style="width: 27; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CCFFCC">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">S5</span></td>
+      <td valign="top" style="width: 29; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CCFFCC">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">S6</span></td>
+      <td valign="top" style="width: 24; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CCFFCC">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">S7</span></td>
+    </tr>
+    <tr>
+      <td valign="top" style="width: 82; border-left: 1.0pt solid windowtext; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">(Gene ID)</span></td>
+      <td valign="top" style="width: 57; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #E6E6E6">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">(Gene Descr.)</span></td>
+      <td valign="top" style="width: 44; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">D</span></td>
+      <td valign="top" style="width: 67; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm">
+      <p class="MsoNormal" align="center" style="text-align: center">
+      <span  style="font-size: 10.0pt">D</span></td>
+      <td valign="top" style="width: 60; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">D</span></td>
+      <td valign="top" style="width: 26; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">D</span></td>
+      <td valign="top" style="width: 27; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">D</span></td>
+      <td valign="top" style="width: 29; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">D</span></td>
+      <td valign="top" style="width: 24; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">D</span></td>
+    </tr>
+    <tr>
+      <td valign="top" style="width: 82; border-left: 1.0pt solid windowtext; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">(Gene ID)</span></td>
+      <td valign="top" style="width: 57; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #E6E6E6">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">(Gene Descr.)</span></td>
+      <td valign="top" style="width: 44; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">D</span></td>
+      <td valign="top" style="width: 67; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm">
+      <p class="MsoNormal" align="center" style="text-align: center">
+      <span  style="font-size: 10.0pt">D</span></td>
+      <td valign="top" style="width: 60; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">D</span></td>
+      <td valign="top" style="width: 26; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">D</span></td>
+      <td valign="top" style="width: 27; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">D</span></td>
+      <td valign="top" style="width: 29; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">D</span></td>
+      <td valign="top" style="width: 24; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">D</span></td>
+    </tr>
+    <tr>
+      <td valign="top" style="width: 82; border-left: 1.0pt solid windowtext; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">(Gene ID)</span></td>
+      <td valign="top" style="width: 57; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #E6E6E6">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">(Gene Descr.)</span></td>
+      <td valign="top" style="width: 44; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">D</span></td>
+      <td valign="top" style="width: 67; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm">
+      <p class="MsoNormal" align="center" style="text-align: center">
+      <span  style="font-size: 10.0pt">D</span></td>
+      <td valign="top" style="width: 60; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">D</span></td>
+      <td valign="top" style="width: 26; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">D</span></td>
+      <td valign="top" style="width: 27; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">D</span></td>
+      <td valign="top" style="width: 29; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">D</span></td>
+      <td valign="top" style="width: 24; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">D</span></td>
+    </tr>
+  </table>
+  <p class="MainText" style="margin-left: 0cm"><i><span lang="EN-US">&nbsp;</span></i></p>
+  <p class="MainText" style="text-align: justify; text-justify: inter-ideograph; margin-left: 0cm">
+  <span  style="font-size: 11.0pt">Entries in <b>bold</b> must be 
+  entered as such. The terms in parenthesis (…) are data-specific labels.</span></p>
+  <p class="MainText" style="text-align: justify; text-justify: inter-ideograph; margin-left: 0cm">
+  <i><span  style="font-size: 11.0pt">S</span></i><span  style="font-size: 11.0pt"> 
+  stands for the sample name, or the sample ID of the sample</span></p>
+  <p class="MainText" style="text-align: justify; text-justify: inter-ideograph; margin-left: 0cm">
+  <i><span  style="font-size: 11.0pt">D</span></i><span  style="font-size: 11.0pt"> 
+  stands for the numeric data for gene expression level </span></p>
+  <p class="MainText" style="text-align: justify; text-justify: inter-ideograph; margin-left: 0cm">
+  <i><span  style="font-size: 11.0pt">DESC</span></i><span  style="font-size: 11.0pt"> 
+  heads the column with the gene description. </span></p>
+  <p class="MainText" style="text-align: justify; text-justify: inter-ideograph; margin-left: 0cm">
+  <span  style="font-size: 11.0pt">&nbsp;</span></p>
+  <p class="MainText" style="text-align: justify; text-justify: inter-ideograph; margin-left: 0cm">
+  <span  style="font-size: 11.0pt">See the example below for more 
+  details.</span></p>
+  <p class="MainText" style="margin-left: 0cm"><b>
+  <span  style="font-size: 14.0pt; font-family: Arial">&nbsp;</span></b></p>
+  <p class="MainText" style="text-align: justify; text-justify: inter-ideograph; margin-left: 0cm">
+  <b><span  style="font-size: 14.0pt; font-family: Arial">2. 
+  Specific example and more details</span></b></p>
+  <p class="MainText" style="text-align: justify; text-justify: inter-ideograph; margin-left: 0cm">
+  <span  style="font-size: 11.0pt">&nbsp;</span></p>
+  <p class="MainText" style="text-align: justify; text-justify: inter-ideograph; margin-left: 0cm">
+  <span  style="font-size: 11.0pt">As an illustration of GEDI</span><span  style="font-size: 11.0pt; font-family: WP TypographicSymbols">=</span><span  style="font-size: 11.0pt">s 
+  input, we present a “<i>dynamic analysis</i>” of an experiment with <i>J</i>=3 
+  time courses, each of them representing a sample class <i>S<sub>j</sub></i>.
+  </span></p>
+  <p class="MainText" style="text-align: justify; text-justify: inter-ideograph; margin-left: 0cm">
+  <b><i><span  style="font-size: 11.0pt">&nbsp;</span></i></b></p>
+  <p class="MainText" style="text-align: justify; text-justify: inter-ideograph; margin-left: 0cm">
+  <b><i><span  style="font-size: 11.0pt">EXAMPLE</span></i></b><i><span  style="font-size: 11.0pt">.&nbsp; 
+  Assume one is interested in comparing the time course of gene expression 
+  profile changes after treatment of cell cultures with three different 
+  cytokines, FGF, VEGF and EGF. These three cellular responses can be visualized 
+  in three animated windows displaying the change of the patterns of the 
+  transcriptome represented as GEDI mosaics. </span></i></p>
+  <p class="MainText" style="text-align: justify; text-justify: inter-ideograph; margin-left: 0cm">
+  <span  style="font-size: 11.0pt">&nbsp;</span></p>
+  <p class="MainText" style="text-align: justify; text-justify: inter-ideograph; margin-left: 0cm">
+  <i><span  style="font-size: 11.0pt">The three parallel time 
+  courses would represent the J = 3 classes of samples. Each can contain a 
+  different number of samples time points (0 to 10 hours). For example, for 
+  class EGF, the sample IDs are 0, 0.5, 5, 10:</span></i></p>
+  <p class="MainText" style="text-align: justify; text-justify: inter-ideograph; margin-left: 0cm">
+  <span lang="EN-US">&nbsp;</span></p>
+  <table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0" style="border-collapse: collapse; border: medium none; margin-left: 52.3pt" width="424">
+    <tr style="page-break-inside: avoid">
+      <td valign="top" style="width: 165; border: 1.0pt solid black; padding-left: 5.05pt; padding-right: 5.05pt; padding-top: 0cm; padding-bottom: 0cm">
+      <p class="MainText" style="margin-left: 0cm">
+      <span  style="font-size: 11.0pt"><u>Time series (sample set <i>
+      Qj</i>)</u></span></td>
+      <td valign="top" style="width: 228; border-left: medium none; border-right: 1.0pt solid black; border-top: 1.0pt solid black; border-bottom: 1.0pt solid black; padding-left: 5.05pt; padding-right: 5.05pt; padding-top: 0cm; padding-bottom: 0cm">
+      <p class="MainText" style="margin-left: 0cm">
+      <span  style="font-size: 11.0pt">&nbsp;Samples for each sample 
+      class </span></td>
+    </tr>
+    <tr style="page-break-inside: avoid">
+      <td valign="top" style="width: 165; border-left: 1.0pt solid black; border-right: 1.0pt solid black; border-top: medium none; border-bottom: 1.0pt solid black; padding-left: 5.05pt; padding-right: 5.05pt; padding-top: 0cm; padding-bottom: 0cm">
+      <p class="MainText" style="margin-left: 0cm"><i>
+      <span  style="font-size: 11.0pt">S<sub>1</sub></span></i><span  style="font-size: 11.0pt">:&nbsp;&nbsp; 
+      FGF</span></td>
+      <td valign="top" style="width: 228; border-left: medium none; border-right: 1.0pt solid black; border-top: medium none; border-bottom: 1.0pt solid black; padding-left: 5.05pt; padding-right: 5.05pt; padding-top: 0cm; padding-bottom: 0cm">
+      <p class="MainText" style="margin-left: 0cm">
+      <st2:citation><span  style="font-size: 11.0pt">{0h, 0.5h, 5h, 
+      10h}</span></st2:citation></td>
+    </tr>
+    <tr style="page-break-inside: avoid">
+      <td valign="top" style="width: 165; border-left: 1.0pt solid black; border-right: 1.0pt solid black; border-top: medium none; border-bottom: 1.0pt solid black; padding-left: 5.05pt; padding-right: 5.05pt; padding-top: 0cm; padding-bottom: 0cm">
+      <p class="MainText" style="margin-left: 0cm"><i>
+      <span  style="font-size: 11.0pt">S<sub>2</sub></span></i><span  style="font-size: 11.0pt">:&nbsp;&nbsp; 
+      VEGF</span></td>
+      <td valign="top" style="width: 228; border-left: medium none; border-right: 1.0pt solid black; border-top: medium none; border-bottom: 1.0pt solid black; padding-left: 5.05pt; padding-right: 5.05pt; padding-top: 0cm; padding-bottom: 0cm">
+      <p class="MainText" style="margin-left: 0cm">
+      <st2:citation><span  style="font-size: 11.0pt">{0h, 2h, 4h, 
+      6h, 8h}</span></st2:citation></td>
+    </tr>
+    <tr style="page-break-inside: avoid">
+      <td valign="top" style="width: 165; border-left: 1.0pt solid black; border-right: 1.0pt solid black; border-top: medium none; border-bottom: 1.0pt solid black; padding-left: 5.05pt; padding-right: 5.05pt; padding-top: 0cm; padding-bottom: 0cm">
+      <p class="MainText" style="margin-left: 0cm"><i>
+      <span  style="font-size: 11.0pt">S<sub>3</sub>:</span></i><span  style="font-size: 11.0pt">&nbsp;&nbsp; 
+      EGF</span></td>
+      <td valign="top" style="width: 228; border-left: medium none; border-right: 1.0pt solid black; border-top: medium none; border-bottom: 1.0pt solid black; padding-left: 5.05pt; padding-right: 5.05pt; padding-top: 0cm; padding-bottom: 0cm">
+      <p class="MainText" style="margin-left: 0cm">
+      <st2:citation><span  style="font-size: 11.0pt">{0h, 3h, 4h, 
+      8h, 10h}</span></st2:citation></td>
+    </tr>
+  </table>
+  <p class="MainText" style="margin-left: 0cm"><span lang="EN-US">
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></p>
+  <p class="MainText" style="margin-left: 0cm"><b>
+  <span  style="font-size: 11.0pt">(1) </span><i>
+  <span  style="font-size: 11.0pt">Dataset Header Rows</span></i><span  style="font-size: 11.0pt"> 
+  : This first header row contains information for whole dataset</span></b></p>
+  <p class="MainText" style="margin-left: 0cm">
+  <span  style="font-size: 11.0pt">The first line is the information 
+  about the whole data file. It has 4 columns.</span></p>
+  <p class="MainText" style="margin-left: 0cm"><i>
+  <span  style="font-size: 11.0pt">Column 1</span></i><span  style="font-size: 11.0pt">: 
+  Start with symbol “}”, “Dynamic” for time series analysis, “Static” for static 
+  analysis.</span></p>
+  <p class="MainText" style="text-indent: -9.0pt; margin-left: 9.0pt"><i>
+  <span  style="font-size: 11.0pt">Column 2</span></i><span  style="font-size: 11.0pt">: 
+  “DESC”, for gene description, this column is optional.</span></p>
+  <p class="MainText" style="text-indent: -9.0pt; margin-left: 9.0pt"><i>
+  <span  style="font-size: 11.0pt">Column 3</span></i><span  style="font-size: 11.0pt">: 
+  Time Unit – it can be a unit of the time point (hour or minute or day) for 
+  dynamic analysis. For static analysis, it is not applicable, so “N/A” is used.</span></p>
+  <p class="MainText" style="text-indent: -9.0pt; margin-left: 9.0pt"><i>
+  <span  style="font-size: 11.0pt">Column 4</span></i><span  style="font-size: 11.0pt">: 
+  Total number of genes, same as the rows of gene expression data</span></p>
+  <p class="MainText" style="text-indent: -9.0pt; margin-left: 9.0pt"><i>
+  <span  style="font-size: 11.0pt">Column 5</span></i><span  style="font-size: 11.0pt">: 
+  Name of the data set</span></p>
+  <p class="MainText" style="margin-left: 0cm">
+  <span  style="font-size: 11.0pt">&nbsp;</span></p>
+  <p class="MainText" style="margin-left: 0cm"><b>
+  <span  style="font-size: 11.0pt">(2) </span><i>
+  <span  style="font-size: 11.0pt">Sample Header Row: </span></i>
+  <span  style="font-size: 11.0pt">&nbsp;Header rows for sample classes</span></b></p>
+  <p class="MainText" style="margin-left: 0cm">
+  <span  style="font-size: 11.0pt">The next Header Rows contain the 
+  column labels describing</span></p>
+  <p class="MainText" style="text-indent: 0cm; margin-left: 0cm">
+  <span  style="font-size: 11.0pt; font-family: Wingdings">§<span style="font-style: normal; font-variant: normal; font-weight: normal; font-size: 7.0pt; font-family: Times New Roman">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </span></span><span  style="font-size: 11.0pt">the sample class <i>
+  S</i> (one of the <i>J</i> time courses) to which a column belongs.</span></p>
+  <p class="MainText" style="text-indent: 0cm; margin-left: 0cm">
+  <span  style="font-size: 11.0pt; font-family: Wingdings">§<span style="font-style: normal; font-variant: normal; font-weight: normal; font-size: 7.0pt; font-family: Times New Roman">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </span></span><span  style="font-size: 11.0pt">the individual 
+  sample <i>s</i> (<i>time points</i> in our example) it represents </span></p>
+  <p class="MainText" style="margin-left: 0cm">
+  <span  style="font-size: 11.0pt">For dynamic analysis, the data 
+  matrix contains <i>J</i> header rows on the top, one for each class of sample
+  <i>S<sub>j</sub> </i>. Thus, in our example there will be three header rows 
+  for the 3 time series.</span></p>
+  <p class="MainText" style="margin-left: 0cm">
+  <span  style="font-size: 11.0pt">Each Header Row contains the 
+  sample labels of a class <i>S<sub>i</sub></i>. The <i>first column</i> in each 
+  header rows contains the name of the sample class <i>S<sub>i</sub></i> (<i>time 
+  courses in the example: VEGF, FGF, EGF</i>). </span></p>
+  <p class="MainText" style="text-indent: 9.25pt; margin-left: 0cm">
+  <span  style="font-size: 11.0pt">&nbsp;</span></p>
+  <table class="MsoTableGrid" border="1" cellspacing="0" cellpadding="0" style="border-collapse: collapse; border: medium none">
+    <tr style="height: 23.15pt">
+      <td width="608" valign="top" style="width: 456.25pt; height: 23.15pt; border: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 5.65pt; padding-bottom: 4.25pt">
+      <p class="MainText" style="text-align: justify; text-justify: inter-ideograph; margin-left: 0cm">
+      <span  style="font-size: 11.0pt">To distinguish the header 
+      lines from the beginning of the gene expression data lines, the user must 
+      insert a <i>special</i> character “}” before the time series’ description.
+      </span></td>
+    </tr>
+  </table>
+  <p class="MainText" style="margin-left: 0cm">
+  <span  style="font-size: 11.0pt">&nbsp;</span></p>
+  <p class="MainText" style="text-align: justify; text-justify: inter-ideograph; margin-left: 0cm">
+  <span  style="font-size: 11.0pt">The columns in the header row on 
+  the right of the first column describe the samples (<i>time point</i>) <i>q<sub>ij</sub></i> 
+  represented by a particular column. The label of a column must be entered in 
+  that header row which describes the sample class <i>(time course</i>) to which 
+  that column belongs. In the positions header row / column) where a particular 
+  column does <i>not</i> correspond to a particular sample class, a value of 
+  ‘-1’ is entered as a space filler.&nbsp; For this reason, all of the sample labels 
+  (time values) must be equal to or greater than 0, i.e., no sample time point 
+  label may be defined with a negative number. </span></p>
+  <p class="MainText" style="text-align: justify; text-justify: inter-ideograph; margin-left: 0cm">
+  <span  style="font-size: 11.0pt">Note: It is possible and sometime 
+  necessary to assign one common column to several sample classes.&nbsp; For 
+  instance, one might want to do this for a <b><i>reference sample</i></b>, 
+  e.g., the 0 hour time point&nbsp; (pre-treatment control ) which should be part of 
+  all the time courses. To do this, simply enter the same time point value (0) 
+  into all of the header rows of the sample classes (time series) which use that 
+  sample time point, 0. (See the following example).&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></p>
+  <p class="MainText" style="text-align: justify; text-justify: inter-ideograph; margin-left: 0cm">
+  <span  style="font-size: 11.0pt">There is no maximum limit of 
+  number of time courses (<i>J</i>) in GEDI</span></p>
+  <p class="MainText" style="text-align: justify; text-justify: inter-ideograph; margin-left: 0cm">
+  <span  style="font-size: 11.0pt">For <i>static</i> analysis, there 
+  will be only one single sample header row, with samples names in each column. 
+  Again, the first column need to have string “}$”.</span></p>
+  <p class="MainText" style="text-align: justify; text-justify: inter-ideograph; margin-left: 0cm">
+  <span  style="font-size: 11.0pt">&nbsp;</span></p>
+  <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+  <span  style="font-size: 11.0pt">(3) <span class="Boldheading">
+  Data Rows</span></span></p>
+  <p class="MainText" style="text-align: justify; text-justify: inter-ideograph; margin-left: 0cm">
+  <span  style="font-size: 11.0pt">Below the header rows are the 
+  data rows.&nbsp; These rows must have a gene description or name in the first 
+  column, followed by the time point values for the time course. The <i>gene IDs</i> 
+  need to be <b>unique</b> for each gene. The <i>gene description/name</i> 
+  column is optional and does not need to be unique.&nbsp; The data point values in 
+  each column correspond to expression levels for the respective gene of the 
+  samples (time points).&nbsp; There is no maximum limit of input genes in GEDI.
+  </span></p>
+  <p class="MainText" style="text-align: justify; text-justify: inter-ideograph; margin-left: 0cm">
+  <span  style="font-size: 11.0pt">&nbsp;</span></p>
+  <p class="MainText" style="text-align: justify; text-justify: inter-ideograph; margin-left: 0cm">
+  <span  style="font-size: 11.0pt">The table of data should be 
+  formatted as a matrix (e.g. in Excel), so that each row represents a gene <i>g<sub>i</sub></i> 
+  (<i>i</i> =1,.., <i>N<sub>G</sub></i>) and each column represents a sample<i> 
+  s<sub>ij</sub> </i>(<i>i</i>&nbsp; = 1,..<i>N<sub>Q</sub></i>, <i>j </i>= 1,..,<i>J
+  </i>) (time point).&nbsp; The input file may contain blank cells.&nbsp; In this case, 
+  NaNs will be inserted for all calculations. Aside from the first column of 
+  data (gene ID) and optional second column (gene description), the entire data 
+  part of spreadsheet should contain only numeric values.&nbsp; </span></p>
+  <p class="MainText" style="text-align: justify; text-justify: inter-ideograph; margin-left: 0cm">
+  <i><span  style="font-size: 11.0pt">&nbsp;</span></i></p>
+  <p class="MainText" style="text-align: justify; text-justify: inter-ideograph; margin-left: 0cm">
+  <i><span  style="font-size: 11.0pt">In our EXAMPLE, the Header 
+  Rows of three time series ‘FGF’, ‘VEGF’, and ‘EGF is shown.&nbsp; Because the 
+  Header Rows identifies each sample column, the actual order of the columns 
+  does not matter. </span></i></p>
+  <p class="MainText" style="text-align: justify; text-justify: inter-ideograph; margin-left: 0cm">
+  <i><span  style="font-size: 11.0pt">The first header line 
+  indicates it is a dynamic dataset. Then it gives the name of the dataset 
+  (“Drug dynamics”), total gene count (“5”), the time unit (“Hour”) of the time 
+  points. 2<sup>nd</sup> column corresponds to the 0 hour time point of all of 
+  the time courses. 4<sup>th</sup> column represents the 3<sup>rd</sup> hour 
+  time point (at hour 5) of FGF.&nbsp; A ‘-1’ has been placed in the 2<sup>nd</sup> 
+  and 3<sup>rd</sup> rows of 3<sup>rd</sup> column so that GEDI recognizes this 
+  column of data to be exclusively for ‘FGF’.&nbsp; 6<sup>th</sup> column represents 
+  the 2<sup>th</sup> hour time point (at hour 2) of VFGF.&nbsp; Again, note that the 
+  first and third lines of the Header Rows have a ‘-1’ in 6<sup>th</sup> column 
+  so that GEDI knows that the data in 6<sup>th</sup> column belongs solely to 
+  the ‘VFGF’ time course. This pattern continues throughout the rest of the 
+  columns. </span></i></p>
+  <p class="MainText" style="text-align: justify; text-justify: inter-ideograph; margin-left: 9.25pt">
+  <span lang="EN-US">&nbsp;</span></p>
+  <table class="MsoTableGrid" border="1" cellspacing="0" cellpadding="0" width="614" style="width: 460.8pt; border-collapse: collapse; border: medium none; margin-left: 5.4pt">
+    <tr>
+      <td width="90" valign="top" style="width: 67.7pt; border: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #FF9900">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">}Dynamic</span></td>
+      <td width="43" valign="top" style="width: 32.45pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: 1.0pt solid windowtext; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CCFFCC">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">Hour</span></td>
+      <td width="40" valign="top" style="width: 30.2pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: 1.0pt solid windowtext; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CCFFCC">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">5</span></td>
+      <td width="75" valign="top" style="width: 56.1pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: 1.0pt solid windowtext; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CCFFCC">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph; text-indent: -5.0pt; margin-left: 5.0pt">
+      <span  style="font-size: 10.0pt">Drug dynamics</span></td>
+      <td width="44" valign="top" style="width: 32.75pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: 1.0pt solid windowtext; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">&nbsp;</span></td>
+      <td width="40" valign="top" style="width: 30.2pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: 1.0pt solid windowtext; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">&nbsp;</span></td>
+      <td width="40" valign="top" style="width: 30.2pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: 1.0pt solid windowtext; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">&nbsp;</span></td>
+      <td width="40" valign="top" style="width: 30.2pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: 1.0pt solid windowtext; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">&nbsp;</span></td>
+      <td width="40" valign="top" style="width: 30.2pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: 1.0pt solid windowtext; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">&nbsp;</span></td>
+      <td width="40" valign="top" style="width: 30.2pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: 1.0pt solid windowtext; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">&nbsp;</span></td>
+      <td width="40" valign="top" style="width: 30.2pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: 1.0pt solid windowtext; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">&nbsp;</span></td>
+      <td width="40" valign="top" style="width: 30.2pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: 1.0pt solid windowtext; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">&nbsp;</span></td>
+      <td width="40" valign="top" style="width: 30.2pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: 1.0pt solid windowtext; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">&nbsp;</span></td>
+    </tr>
+    <tr>
+      <td width="90" valign="top" style="width: 67.7pt; border-left: 1.0pt solid windowtext; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #FFFF99">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">}FGF</span></td>
+      <td width="43" valign="top" style="width: 32.45pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">0</span></td>
+      <td width="40" valign="top" style="width: 30.2pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #FFFF99">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">0.5</span></td>
+      <td width="75" valign="top" style="width: 56.1pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #FFFF99">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">5</span></td>
+      <td width="44" valign="top" style="width: 32.75pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #FFFF99">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">10</span></td>
+      <td width="40" valign="top" style="width: 30.2pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CCFFCC">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">-1</span></td>
+      <td width="40" valign="top" style="width: 30.2pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CCFFCC">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">-1</span></td>
+      <td width="40" valign="top" style="width: 30.2pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CCFFCC">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">-1</span></td>
+      <td width="40" valign="top" style="width: 30.2pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CCFFCC">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">-1</span></td>
+      <td width="40" valign="top" style="width: 30.2pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CCFFCC">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">-1</span></td>
+      <td width="40" valign="top" style="width: 30.2pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CCFFCC">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">-1</span></td>
+      <td width="40" valign="top" style="width: 30.2pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CCFFCC">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">-1</span></td>
+      <td width="40" valign="top" style="width: 30.2pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CCFFCC">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">-1</span></td>
+    </tr>
+    <tr>
+      <td width="90" valign="top" style="width: 67.7pt; border-left: 1.0pt solid windowtext; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CCFFFF">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">}VEGF</span></td>
+      <td width="43" valign="top" style="width: 32.45pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">0</span></td>
+      <td width="40" valign="top" style="width: 30.2pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CCFFCC">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">-1</span></td>
+      <td width="75" valign="top" style="width: 56.1pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CCFFCC">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">-1</span></td>
+      <td width="44" valign="top" style="width: 32.75pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CCFFCC">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">-1</span></td>
+      <td width="40" valign="top" style="width: 30.2pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CCFFFF">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">2</span></td>
+      <td width="40" valign="top" style="width: 30.2pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CCFFFF">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">4</span></td>
+      <td width="40" valign="top" style="width: 30.2pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CCFFFF">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">6</span></td>
+      <td width="40" valign="top" style="width: 30.2pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CCFFFF">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">8</span></td>
+      <td width="40" valign="top" style="width: 30.2pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CCFFCC">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">-1</span></td>
+      <td width="40" valign="top" style="width: 30.2pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CCFFCC">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">-1</span></td>
+      <td width="40" valign="top" style="width: 30.2pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CCFFCC">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">-1</span></td>
+      <td width="40" valign="top" style="width: 30.2pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CCFFCC">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">-1</span></td>
+    </tr>
+    <tr>
+      <td width="90" valign="top" style="width: 67.7pt; border-left: 1.0pt solid windowtext; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CC99FF">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">}EGF</span></td>
+      <td width="43" valign="top" style="width: 32.45pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">0</span></td>
+      <td width="40" valign="top" style="width: 30.2pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CCFFCC">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">-1</span></td>
+      <td width="75" valign="top" style="width: 56.1pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CCFFCC">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">-1</span></td>
+      <td width="44" valign="top" style="width: 32.75pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CCFFCC">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">-1</span></td>
+      <td width="40" valign="top" style="width: 30.2pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CCFFCC">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">-1</span></td>
+      <td width="40" valign="top" style="width: 30.2pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CCFFCC">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">-1</span></td>
+      <td width="40" valign="top" style="width: 30.2pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CCFFCC">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">-1</span></td>
+      <td width="40" valign="top" style="width: 30.2pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CCFFCC">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">-1</span></td>
+      <td width="40" valign="top" style="width: 30.2pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CC99FF">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">3</span></td>
+      <td width="40" valign="top" style="width: 30.2pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CC99FF">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">4</span></td>
+      <td width="40" valign="top" style="width: 30.2pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CC99FF">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">8</span></td>
+      <td width="40" valign="top" style="width: 30.2pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CC99FF">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">10</span></td>
+    </tr>
+    <tr>
+      <td width="90" valign="top" style="width: 67.7pt; border-left: 1.0pt solid windowtext; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">Gene ABC1</span></td>
+      <td width="43" valign="top" style="width: 32.45pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">-0.9</span></td>
+      <td width="40" valign="top" style="width: 30.2pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #FFFF99">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">-1</span></td>
+      <td width="75" valign="top" style="width: 56.1pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #FFFF99">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">-1</span></td>
+      <td width="44" valign="top" style="width: 32.75pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #FFFF99">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">-2.4</span></td>
+      <td width="40" valign="top" style="width: 30.2pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CCFFFF">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">-5.5</span></td>
+      <td width="40" valign="top" style="width: 30.2pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CCFFFF">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">0.1</span></td>
+      <td width="40" valign="top" style="width: 30.2pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CCFFFF">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">0</span></td>
+      <td width="40" valign="top" style="width: 30.2pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CCFFFF">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">-0.4</span></td>
+      <td width="40" valign="top" style="width: 30.2pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CC99FF">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">-0.9</span></td>
+      <td width="40" valign="top" style="width: 30.2pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CC99FF">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">-1.3</span></td>
+      <td width="40" valign="top" style="width: 30.2pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CC99FF">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">0</span></td>
+      <td width="40" valign="top" style="width: 30.2pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CC99FF">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">-0.5</span></td>
+    </tr>
+    <tr>
+      <td width="90" valign="top" style="width: 67.7pt; border-left: 1.0pt solid windowtext; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">Gene ABC2</span></td>
+      <td width="43" valign="top" style="width: 32.45pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">-0.8</span></td>
+      <td width="40" valign="top" style="width: 30.2pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #FFFF99">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">-0.4</span></td>
+      <td width="75" valign="top" style="width: 56.1pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #FFFF99">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">-0.9</span></td>
+      <td width="44" valign="top" style="width: 32.75pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #FFFF99">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">-1</span></td>
+      <td width="40" valign="top" style="width: 30.2pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CCFFFF">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">-0.4</span></td>
+      <td width="40" valign="top" style="width: 30.2pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CCFFFF">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">-0.4</span></td>
+      <td width="40" valign="top" style="width: 30.2pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CCFFFF">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">0.2</span></td>
+      <td width="40" valign="top" style="width: 30.2pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CCFFFF">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">-0.6</span></td>
+      <td width="40" valign="top" style="width: 30.2pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CC99FF">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">-0.7</span></td>
+      <td width="40" valign="top" style="width: 30.2pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CC99FF">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">-0.5</span></td>
+      <td width="40" valign="top" style="width: 30.2pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CC99FF">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">0.6</span></td>
+      <td width="40" valign="top" style="width: 30.2pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CC99FF">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">2.2</span></td>
+    </tr>
+    <tr>
+      <td width="90" valign="top" style="width: 67.7pt; border-left: 1.0pt solid windowtext; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">Gene ABC3</span></td>
+      <td width="43" valign="top" style="width: 32.45pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">0.6</span></td>
+      <td width="40" valign="top" style="width: 30.2pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #FFFF99">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">0.9</span></td>
+      <td width="75" valign="top" style="width: 56.1pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #FFFF99">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">0.6</span></td>
+      <td width="44" valign="top" style="width: 32.75pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #FFFF99">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">0.3</span></td>
+      <td width="40" valign="top" style="width: 30.2pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CCFFFF">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">0.7</span></td>
+      <td width="40" valign="top" style="width: 30.2pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CCFFFF">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">1.1</span></td>
+      <td width="40" valign="top" style="width: 30.2pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CCFFFF">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">0.9</span></td>
+      <td width="40" valign="top" style="width: 30.2pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CCFFFF">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">1</span></td>
+      <td width="40" valign="top" style="width: 30.2pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CC99FF">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">0.4</span></td>
+      <td width="40" valign="top" style="width: 30.2pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CC99FF">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">0.7</span></td>
+      <td width="40" valign="top" style="width: 30.2pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CC99FF">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">0.7</span></td>
+      <td width="40" valign="top" style="width: 30.2pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CC99FF">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">0.7</span></td>
+    </tr>
+    <tr>
+      <td width="90" valign="top" style="width: 67.7pt; border-left: 1.0pt solid windowtext; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">Gene ABC4</span></td>
+      <td width="43" valign="top" style="width: 32.45pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">-0.3</span></td>
+      <td width="40" valign="top" style="width: 30.2pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #FFFF99">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">-0.1</span></td>
+      <td width="75" valign="top" style="width: 56.1pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #FFFF99">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">0.3</span></td>
+      <td width="44" valign="top" style="width: 32.75pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #FFFF99">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">0.4</span></td>
+      <td width="40" valign="top" style="width: 30.2pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CCFFFF">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">0.6</span></td>
+      <td width="40" valign="top" style="width: 30.2pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CCFFFF">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">0</span></td>
+      <td width="40" valign="top" style="width: 30.2pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CCFFFF">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">0.1</span></td>
+      <td width="40" valign="top" style="width: 30.2pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CCFFFF">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">0.3</span></td>
+      <td width="40" valign="top" style="width: 30.2pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CC99FF">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">0.3</span></td>
+      <td width="40" valign="top" style="width: 30.2pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CC99FF">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">0.8</span></td>
+      <td width="40" valign="top" style="width: 30.2pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CC99FF">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">0.4</span></td>
+      <td width="40" valign="top" style="width: 30.2pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CC99FF">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">-0.1</span></td>
+    </tr>
+    <tr>
+      <td width="90" valign="top" style="width: 67.7pt; border-left: 1.0pt solid windowtext; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">Gene ABC5</span></td>
+      <td width="43" valign="top" style="width: 32.45pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">-1.4</span></td>
+      <td width="40" valign="top" style="width: 30.2pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #FFFF99">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">-0.5</span></td>
+      <td width="75" valign="top" style="width: 56.1pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #FFFF99">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">-0.2</span></td>
+      <td width="44" valign="top" style="width: 32.75pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #FFFF99">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">-0.4</span></td>
+      <td width="40" valign="top" style="width: 30.2pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CCFFFF">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">-0.6</span></td>
+      <td width="40" valign="top" style="width: 30.2pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CCFFFF">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">-0.2</span></td>
+      <td width="40" valign="top" style="width: 30.2pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CCFFFF">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">-0.7</span></td>
+      <td width="40" valign="top" style="width: 30.2pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CCFFFF">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">-0.1</span></td>
+      <td width="40" valign="top" style="width: 30.2pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CC99FF">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">-0.7</span></td>
+      <td width="40" valign="top" style="width: 30.2pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CC99FF">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">-1</span></td>
+      <td width="40" valign="top" style="width: 30.2pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CC99FF">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">-0.6</span></td>
+      <td width="40" valign="top" style="width: 30.2pt; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm; background: #CC99FF">
+      <p class="MsoNormal" style="text-align: justify; text-justify: inter-ideograph">
+      <span  style="font-size: 10.0pt">-0.1</span></td>
+    </tr>
+  </table>
+  <p class="MainText" style="margin-left: 9.25pt">
+  <span  style="font-size: 11.0pt">&nbsp;</span></p>
+  <p class="MsoNormal"><span class="Boldheading">
+  <span  style="font-size: 10.0pt">Note</span></span></p>
+  <p class="MainText" style="margin-left: 0cm">
+  <span  style="font-size: 10.0pt">The file format should be in the 
+  form of a Text (Tab delimited) (*.txt)</span><span  style="font-size: 10.0pt; font-family: WP TypographicSymbols">@</span><span  style="font-size: 10.0pt"> 
+  file. This format is exportable from Excel or other spreadsheet applications.&nbsp; 
+  Occasionally excel will insert stray characters in the columns to the right of 
+  your data matrix, or in the rows below your matrix. If this happens, GEDI may 
+  fail to load the data file. To fix the problem, it is recommended that you 
+  simply highlight your entire data matrix, and copy it over into a new excel 
+  spreadsheet.</span><span  style="font-size: 11.0pt">&nbsp;&nbsp; 
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></p>
+  <p class="MsoNormal"><span lang="EN-US">&nbsp;</span></p>
+  <p class="MsoNormal">　</p>
+  <p class="MsoNormal">　</p>
+  <p class="MsoNormal">　</p>
+  <p class="MsoNormal"><span lang="EN-US">&nbsp;</span></p>
+  <p class="MsoNormal"><span  style="font-size: 8.0pt">&copy;2005 
+  Children’s Hospital, Boston </span></p>
+  <p class="MsoNormal"><span lang="EN-US">&nbsp;</span></div>
+</div>
+</body>
+
+</html>
