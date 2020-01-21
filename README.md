@@ -37,3 +37,12 @@ _The input data format, which can be obtained by simple manual modification of t
 
 ### 1.5 Screenshot
 ![gedi_screenshot](screenshots/screenShot.jpg)
+
+GEDI displays the analysis name and the data set name on the title bar of the program. The main area of GEDI is the working areas; it is organized into 4 Tabs:
+
+ - Welcome: This is the welcome screen when you just open GEDI.
+ - Data: This is to display the information about the dataset.
+ - GEDI-Map/Movie: This is the main working area to view GEDI Maps and detailed information about genes, etc.
+ - Display/Calculation: This allows user to selectively display a subset of the samples, or to calculate “Average Maps” or “Difference Maps” from selected GEDI mosaics.
+  
+Above the working area are the menu items and some tool bar buttons for commonly used functions.
