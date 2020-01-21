@@ -48,7 +48,7 @@ GEDI displays the analysis name and the data set name on the title bar of the pr
 Above the working area are the menu items and some tool bar buttons for commonly used functions.
 
 
-### 1.6.Basic Capabilities and Feature
+### 1.6 Basic Capabilities and Feature
  
  - Sample clustering: Every sample is translated into a distinct mosaic, yielding a stack of mosaics. The user can browse though the stacks and can choose to display selected samples The mosaics can be saved independently as jpeg files, and used for presentation and printing using standard graphics programs, such as PowerPoint or Corel Draw.
  - Gene clustering: Genes that behave similarly across the set of samples are located in tiles in the same region of the grid. Tightly co-regulated genes are assigned to the same tiles. Thus, genes that behave similarly in a subset of the samples, and distinctively between samples, will spring to eye, e.g., “as a red island in a sea of blue”. Clicking on the spots will show the genes in the gene list window.
@@ -56,7 +56,7 @@ Above the working area are the menu items and some tool bar buttons for commonly
  - Animation: If a stack of mosaic contains a group of sample representing time points of a time course, the stack can be animated to show the change of the transcriptomes, allowing recognition of coherent dynamic patterns across the profile.
  - Analysis of individual genes: User can retrieve the genes associated with features in the mosaic patterns. Gene description of a gene selected based on a feature in a GEDI map for one sample and along with its behavior in other samples can be displayed by clicking on the tiles, which displays the genes contained in that respective minicluster, and by clicking on the specific gene in the list. Alternatively, a specific gene name can be search for by entering its name in the search window, which will display its location on the mosaics.
  
-### 1.7.The work flow and work environment of GEDI
+### 1.7 The work flow and work environment of GEDI
  
 The GEDI environment is simple. It consists of one single user interface window containing various, fixed displays. Working with GEDI consists of the following steps:
 
