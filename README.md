@@ -36,4 +36,4 @@ GEDI can analyze two different types of gene expression profile data:
 _The input data format, which can be obtained by simple manual modification of the expression data spreadsheets (see 3.1.) determines whether GEDI will analyze in the Dynamic or Static data mode._
 
 ### 1.5 Screenshot
-[](screenshots/screenShot.jpg)
+![gedi_screenshot](screenshots/screenShot.jpg)
