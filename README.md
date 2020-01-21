@@ -2,10 +2,9 @@
 
 GEDI was developed by Yuchun Guo, Ying Feng, Gabriel Eichler and Sui Huang at Children’s Hospital Boston, Harvard Medical School. This software is made available for non-commercial research use only, with permission from Children's Hospital, Boston. US and foreign patents pending. 
 
-GEDI is currently hosted on GitHub by the [Predictive BioAnalytics](mailto:midas@wyss.harvard.edu) group at the [Wyss Institute](www.wyss.harvard.edu) and is provided `as is`. For user manual, settings, example inputs, please refer to the `HTML` files in this repository.
+GEDI is currently hosted on GitHub by the [Predictive BioAnalytics](mailto:midas@wyss.harvard.edu) group at the [Wyss Institute](www.wyss.harvard.edu) and is provided `as is`. For user manual, settings, example inputs, please refer to the `HTML` files in this repository or keep reading.
 
-
-Reference:
+If you decide to use GEDI in your work, please cite:
 Eichler, G.S., Huang, S. Ingber, D.E., Gene Expression Dynamics Inspector (GEDI): for integrative analysis of expression profiles, Bioinformatics, 19(17),2321-2 [[PubMed](https://www.ncbi.nlm.nih.gov/pubmed/14630665)]
 
 
@@ -32,5 +31,7 @@ GEDI can analyze two different types of gene expression profile data:
 　
  - Dynamic analysis: Analysis of multiple parallel time-series data, allowing the comparison of multiple high-dimensional time courses, e.g. following treatments with various drugs. A mosaic then represents a state in the gene expression state space, and its trajectory through state space is reflected in the change of the mosaic patterns which can be displayed as a movie.
  - Static analysis: Analysis of non-time-series data, e.g. expression profiles of tumor samples from different patients, or comparison between normal or disease sample, etc. Because of its original design for parallel time series data and the concept of sample-oriented analysis, GEDI allows efficient navigation through “sample space”, facilitating quick visual comparison of individual samples in a large set of profiles, similar to sorting through a large stack of trading baseball cards.
+ 
 　
 _The input data format, which can be obtained by simple manual modification of the expression data spreadsheets (see 3.1.) determines whether GEDI will analyze in the Dynamic or Static data mode._
+
